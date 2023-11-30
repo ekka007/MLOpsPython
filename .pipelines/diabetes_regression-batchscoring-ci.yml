@@ -54,7 +54,7 @@ stages:
         projectId: '$(resources.pipeline.model-train-ci.projectID)'
         pipelineId: '$(resources.pipeline.model-train-ci.pipelineID)'
         artifactBuildId: ${{ parameters.artifactBuildId }}
-    - task: AzureCLI@2
+    - task: AzureCLI@1
       displayName: "Publish Batch Scoring Pipeline"
       name: publish_batchscore
       inputs:
@@ -79,7 +79,7 @@ stages:
       model_name: $[ dependencies.Build_Batch_Scoring_Pipeline.outputs['get_model.MODEL_NAME']]
       model_version: $[ dependencies.Build_Batch_Scoring_Pipeline.outputs['get_model.MODEL_VERSION']]
     steps:
-    - task: ms-air-aiagility.vss-services-azureml.azureml-restApi-task.MLPublishedPipelineRestAPITask@0
+    - task: ms-air-aiagility.vss-services-azureml.azureml-restApi-task.MLPublishedPipelineRestAPITask@1
       displayName: 'Invoke Batch Scoring pipeline'
       inputs:
         azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
