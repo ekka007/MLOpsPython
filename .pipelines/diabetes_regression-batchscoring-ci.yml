@@ -79,7 +79,7 @@ stages:
       model_name: $[ dependencies.Build_Batch_Scoring_Pipeline.outputs['get_model.MODEL_NAME']]
       model_version: $[ dependencies.Build_Batch_Scoring_Pipeline.outputs['get_model.MODEL_VERSION']]
     steps:
-    - task: ms-air-aiagility.vss-services-azureml.azureml-restApi-task.MLPublishedPipelineRestAPITask@1
+    - task: ms-air-aiagility.vss-services-azureml.azureml-restApi-task.MLPublishedPipelineRestAPITask@2
       displayName: 'Invoke Batch Scoring pipeline'
       inputs:
         azureSubscription: '$(WORKSPACE_SVC_CONNECTION)'
